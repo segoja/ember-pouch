@@ -1,5 +1,5 @@
 import { Adapter } from 'ember-pouch';
-import config from 'dummy/config/environment';
+import config from 'test-app/config/environment';
 
 export default class DummyAdapter extends Adapter {
   _init(store, type) {

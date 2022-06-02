@@ -1,9 +1,9 @@
 import { defer } from 'rsvp';
 import { assert } from '@ember/debug';
 import { isEmpty } from '@ember/utils';
-import DummyAdapter from 'dummy/adapter';
+import DummyAdapter from 'test-app/adapter';
 import PouchDB from 'ember-pouch/pouchdb';
-import config from 'dummy/config/environment';
+import config from 'test-app/config/environment';
 
 function createDb() {
   let localDb = config.emberPouch.localDb;

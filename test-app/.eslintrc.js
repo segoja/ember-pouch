@@ -36,7 +36,6 @@ module.exports = {
         './testem.js',
         './blueprints/*/index.js',
         './config/**/*.js',
-        './tests/dummy/config/**/*.js',
       ],
       parserOptions: {
         sourceType: 'script',
@@ -66,8 +65,8 @@ module.exports = {
       rules: {
         'qunit/resolve-async': 0,
         'qunit/no-assert-logical-expression': 0,
-        'qunit/no-ok-equality': 0,
-        'qunit/no-negated-ok': 0,
+        //'qunit/no-ok-equality': 0,
+        //'qunit/no-negated-ok': 0,
         // 'qunit/require-expect': 0,
       },
     },

@@ -1,0 +1,59 @@
+{
+  "name": "ember-pouch",
+  "version": "7.0.0",
+  "description": "PouchDB adapter for Ember Data",
+  "keywords": [
+    "ember-addon",
+    "Ember",
+    "Octane",
+    "Data",
+    "adapter",
+    "PouchDB",
+    "CouchDB"
+  ],
+  "bugs": {
+    "url": "https://github.com/pouchdb-community/ember-pouch/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pouchdb-community/ember-pouch.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Nolan Lawson",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel \"lint:!(fix)\"",
+    "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
+    "lint:hbs": "ember-template-lint .",
+    "lint:hbs:fix": "ember-template-lint . --fix",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "ember-auto-import": "~2.4.2",
+    "ember-cli-babel": "^7.26.11",
+    "pouchdb-browser": "*",
+    "pouchdb-find": "*",
+    "relational-pouch": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "ember-template-lint": "^4.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-ember": "^10.5.9",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-qunit": "^7.2.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.6.1"
+  },  
+  "engines": {
+    "node": "12.* || 14.* || >= 16"
+  },
+  "ember": {
+    "edition": "octane"
+  }
+}

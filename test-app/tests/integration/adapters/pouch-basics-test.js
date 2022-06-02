@@ -6,7 +6,7 @@ import { setupTest } from 'ember-qunit';
 // import DS from 'ember-data';
 import moduleForIntegration from '../../helpers/module-for-pouch-acceptance';
 
-import config from 'dummy/config/environment';
+import config from 'test-app/config/environment';
 
 function promiseToRunLater(timeout) {
   return new Promise((resolve) => {
@@ -681,8 +681,9 @@ module('Integration | Adapter | Basic CRUD Ops', {}, function (hooks) {
             });
         })
         .then((soup) => {
-          assert.ok(
-            soup === null,
+          assert.strictEqual(
+            soup,
+            null,
             'deleted soup should have cascaded to a null value for the belongsTo'
           );
         })
@@ -723,8 +724,9 @@ module('Integration | Adapter | Basic CRUD Ops', {}, function (hooks) {
             });
         })
         .then((soup) => {
-          assert.ok(
-            soup === null,
+          assert.strictEqual(
+            soup,
+            null,
             'deleted soup should have cascaded to a null value for the belongsTo'
           );
         })

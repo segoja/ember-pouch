@@ -1,10 +1,8 @@
 'use strict';
 
-const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
-const { maybeEmbroider } = require('@embroider/test-setup');
-
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function (defaults) {
-  let app = new EmberAddon(defaults, {
+  let app = new EmberApp(defaults, {
     // Add options here
   });
 
@@ -15,6 +13,7 @@ module.exports = function (defaults) {
     behave. You most likely want to be modifying `./index.js` or app's build file
   */
 
+  const { maybeEmbroider } = require('@embroider/test-setup');
   return maybeEmbroider(app, {
     skipBabel: [
       {

@@ -3,7 +3,7 @@
 
 module.exports = function (environment) {
   let ENV = {
-    modulePrefix: 'dummy',
+    modulePrefix: 'test-app',
     environment,
     emberPouch: { localDb: 'ember-pouch-test' },
     rootURL: '/',

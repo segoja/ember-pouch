@@ -35,11 +35,15 @@ jobs:
           else
           npm i
           fi
-      - name: Lint
+      - name: Lint Addon
         run: npm run lint
+        working-directory: addon
+      - name: Lint Test App
+        run: npm run lint
+        working-directory: test-app
       - name: Run Tests
         run: npm run test:ember
-
+        working-directory: test-app
   floating:
     name: "Floating Dependencies"
     runs-on: ubuntu-latest
@@ -54,6 +58,7 @@ jobs:
         run: npm install --no-shrinkwrap
       - name: Run Tests
         run: npm run test:ember
+        working-directory: test-app
 
   try-scenarios:
     name: ${{ matrix.try-scenario }}
@@ -94,3 +99,4 @@ jobs:
           fi
       - name: Run Tests
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
+        working-directory: test-app
