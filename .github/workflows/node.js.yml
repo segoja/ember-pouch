@@ -13,7 +13,11 @@ on:
 concurrency:
   group: ci-${{ github.head_ref || github.ref }}
   cancel-in-progress: true
-
+env:
+  CI: true
+  CACHE_PATH: '**/node_modules'
+  ADDON_DIR: './addon'
+  TEST_DIR: './test-app'
 jobs:
   test:
     name: "Tests"
@@ -36,14 +40,17 @@ jobs:
           npm i
           fi
       - name: Lint Addon
-        run: npm run lint
-        working-directory: addon
+        run:|
+          cd ${{ env.ADDON_DIR }}
+          npm run lint
       - name: Lint Test App
-        run: npm run lint
-        working-directory: test-app
+        run:|
+          cd ${{ env.TEST_DIR }}
+          npm run lint
       - name: Run Tests
-        run: npm run test:ember
-        working-directory: test-app
+        run:|
+          cd ${{ env.TEST_DIR }}
+          npm run test:ember
   floating:
     name: "Floating Dependencies"
     runs-on: ubuntu-latest
@@ -57,9 +64,9 @@ jobs:
       - name: Install Dependencies
         run: npm install --no-shrinkwrap
       - name: Run Tests
-        run: npm run test:ember
-        working-directory: test-app
-
+        run: |
+          cd ${{ env.TEST_DIR }}
+          npm run test:ember
   try-scenarios:
     name: ${{ matrix.try-scenario }}
     runs-on: ubuntu-latest
@@ -98,5 +105,10 @@ jobs:
           npm i
           fi
       - name: Run Tests
-        run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
-        working-directory: test-app
+        run: |
+          cd ${{ env.ADDON_DIR }}
+          yarn build
+          yarn link
+          cd ../test-app
+          yarn link ember-statechart-component
+          yarn ember try:one ${{ matrix.try-scenario }} --skip-cleanup
