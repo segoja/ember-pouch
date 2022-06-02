@@ -40,15 +40,15 @@ jobs:
           npm i
           fi
       - name: Lint Addon
-        run:|
+        run: |
           cd ${{ env.ADDON_DIR }}
           npm run lint
       - name: Lint Test App
-        run:|
+        run: |
           cd ${{ env.TEST_DIR }}
           npm run lint
       - name: Run Tests
-        run:|
+        run: |
           cd ${{ env.TEST_DIR }}
           npm run test:ember
   floating:
